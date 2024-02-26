@@ -1,5 +1,4 @@
-//array de escabiosos
-const escabiosos = [
+const productos = [
     { id: 1, nombre: "Fernet",precio: 9500, imagen:"https://acdn.mitiendanube.com/stores/002/483/999/products/branca-1000ml11-7bba8feb245b1b83b116788319873735-480-0.webp"},
     { id: 2, nombre: "Absolut",precio: 7000, imagen:"https://acdn.mitiendanube.com/stores/002/483/999/products/absolut-regular1-964092eee7ca64887616772638332075-480-0.webp"},
     { id: 3, nombre: "Gin", precio: 10000, imagen:"https://acdn.mitiendanube.com/stores/002/483/999/products/aconcagua-edicion-lemongrass-750ml1-1e303846be5a84a6c416776212048148-480-0.webp"},
@@ -10,66 +9,65 @@ const escabiosos = [
     { id: 8, nombre: "Jugo Baggio",precio: 1900, imagen: "https://acdn.mitiendanube.com/stores/002/483/999/products/baggio-naranja-1-50lts1-b5086a36285558b59b16870097688414-480-0.webp"},
     { id: 9, nombre: "Sprite", precio: 2100, imagen:"https://acdn.mitiendanube.com/stores/002/483/999/products/sprite-2-25lts1-f3cd11e39e18f531c816869238855090-480-0.webp"},
     { id: 10, nombre: "Speed",precio: 1100, imagen: "https://acdn.mitiendanube.com/stores/002/483/999/products/speed-473ml1-b987580598c97355ac16869267799321-480-0.webp"},
-];
+]
 
-console.log (escabiosos)
-
-
-
-const guardarEscabiososLS = (escabiosos) => {
-
-    localStorage.setItem("escabiosos", JSON.stringify(escabiosos)) || [];
+const guardarProductosLS = (productos) => {
+    localStorage.setItem("productos", JSON.stringify(productos));
 }
 
 
-const obtenerProductosLS = () =>{
-
-    return JSON.parse(localStorage.getItem("escabiosos"))
+const obtenerProductosLS =() =>  {
+    return JSON.parse(localStorage.getItem("productos")) || [];
 }
 
 
-const guardarCarritoLS = () => {
 
-    localStorage.setItem("carrito", JSON.stringify(escabiosos))
-
+const guardarCarritoLS = (productos) => {
+    localStorage.setItem("carrito",JSON.stringify(productos));
 }
 
 
-const obtenerCarritoLS = () => {
+
+const obtenerCarritoLS =() => {
     return JSON.parse(localStorage.getItem("carrito")) || [];
 }
 
 
 
-const obtenerIdEscabiosoLS = () => {
-    return JSON.parse(localStorage.getItem("escabioso")) || 0 ;
+
+const obtenerIdProductoLS = () => {
+    return JSON.parse(localStorage.getItem("producto")) || 0 ;
 }
 
 
 
-const totalProductos = () => {
+
+const cantTotalProductos = () => {
     const carrito = obtenerCarritoLS ();
-    return carrito.lenght; 
+
+    return carrito.lenght;
+
 }
 
 
-const renderTotalCarrito =() =>{
-    document.getElementById("totalCarrito").innerHTML= totalProductos();
+
+const renderTotalCarrito = ()  =>{
+
+    document.getElementById ("totalCarrito").innerHTML = cantTotalProductos();
 }
 
 
-const verEscabioso = (id) =>{
+
+
+const verProducto = (id) => {
     localStorage.setItem("producto", JSON.stringify(id));
 }
 
-const obtenerEscabiosoLS = () => {
-    const escabiosos = obtenerProductosLS();
-    const id = obtenerIdEscabiosoLS (); 
-    const escabioso = escabiosos.find( item => item.id === id) ;
-    return escabioso;
-
-
-
-
+const obtenerProductoLS = () => {
+    const productos = obtenerProductosLS();
+    const id = obtenerIdProductoLS();
+    const producto = productos.find(item => item.id === id);
+    return producto;
 }
-guardarEscabiososLS(escabiosos);
+
+guardarProductosLS(productos);

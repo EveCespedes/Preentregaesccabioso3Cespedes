@@ -1,25 +1,26 @@
 
-
 function renderProductos (){
 
-    const escabiosos = obtenerProductosLS();
+    const productos = obtenerProductosLS ()
 
-    let contenido="";
+    
+    let contenido = "";
 
-    for (const producto of escabiosos) {
-        contenido +=`<div class="col-md-4">
-        <a href= "escabiosos.html" onclick=verProducto(${producto.id});>
-        <img src="${producto.imagen}" alt="${producto.nombre}" class="img-fluid" />
-        <p class="fuente">${producto.nombre}</p>
-        </a>
-        </div>`; 
+    for (const producto of productos) {
         
+        contenido +=`<div class="col-md-4 text-center">
+        <a href ="producto.html" onclick="verProducto(${producto.id};" class="text-decoration-none">
+        <img src ="${producto.imagen}" alt="${producto.nombre}" />
+        <p class= "fuente">${producto.nombre} </p>
+        </a>
+        </div>`;
     }
 
-    document.getElementById("escabiosos").innerHTML=contenido;
-
-}
-
+    document.getElementById("productos").innerHTML= contenido;
+} 
 
 
-renderProductos ();
+
+
+
+renderProductos();
